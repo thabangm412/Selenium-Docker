@@ -8,10 +8,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.thabangs.pages.AbstractPage;
 
 public class FlightSearchPage extends AbstractPage{
+
+    private static final Logger log = LoggerFactory.getLogger(FlightSearchPage.class);
 
     @FindBy(xpath = "//h2[contains(text(),'Flight Search')]")
     private WebElement flightSearchText;

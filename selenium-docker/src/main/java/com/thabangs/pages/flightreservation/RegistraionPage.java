@@ -5,10 +5,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.thabangs.pages.AbstractPage;
 
 public class RegistraionPage extends AbstractPage{
+
+    private static final Logger log = LoggerFactory.getLogger(RegistraionPage.class);
 
     @FindBy(xpath = "//h2[contains(text(),'Customer Registration')]")
     private WebElement customerRegistrationPage;
@@ -57,6 +61,8 @@ public class RegistraionPage extends AbstractPage{
     public void goTo(String url)
     {
         this.driver.get(url);
+        log.info("Url opened");
+       
     }
 
     public void enterUserDetains(String firstName, String lastName) 
