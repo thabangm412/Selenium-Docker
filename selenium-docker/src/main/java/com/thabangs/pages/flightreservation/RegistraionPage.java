@@ -10,6 +10,9 @@ import com.thabangs.pages.AbstractPage;
 
 public class RegistraionPage extends AbstractPage{
 
+    @FindBy(xpath = "//h2[contains(text(),'Customer Registration')]")
+    private WebElement customerRegistrationPage;
+
     @FindBy(id = "firstName")
     private WebElement firstNameInput;
 
@@ -47,8 +50,8 @@ public class RegistraionPage extends AbstractPage{
 
     @Override
     public boolean isAt() {
-        this.wait.until(ExpectedConditions.visibilityOf(this.firstNameInput));
-        return this.firstNameInput.isDisplayed();
+        this.wait.until(ExpectedConditions.visibilityOf(this.customerRegistrationPage));
+        return this.customerRegistrationPage.isDisplayed();
     }
 
     public void goTo(String url)
@@ -66,7 +69,7 @@ public class RegistraionPage extends AbstractPage{
     {
         this.streetInput.sendKeys(street);
         this.cityInput.sendKeys(city);
-        Select select = new Select(stateInput); //Keep an eye on this one
+        Select select = new Select(this.stateInput); //Keep an eye on this one
         select.selectByValue(state);
         this.zipInput.sendKeys(zip);
     }

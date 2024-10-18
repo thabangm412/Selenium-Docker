@@ -9,7 +9,7 @@ import com.thabangs.pages.AbstractPage;
 
 public class RegistrationConfirmationPage extends AbstractPage{
 
-    @FindBy(css  = "h2.text-center.text-secondary")
+    @FindBy(xpath =  "//h2[contains(text(),'Registration Confirmation')]")
     private WebElement registrationConfirmationText;
 
     @FindBy(id = "go-to-flights-search")

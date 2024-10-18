@@ -13,7 +13,7 @@ import com.thabangs.pages.AbstractPage;
 
 public class FlightSearchPage extends AbstractPage{
 
-    @FindBy(css = "h2.text-center.text-secondary")
+    @FindBy(xpath = "//h2[contains(text(),'Flight Search')]")
     private WebElement flightSearchText;
     
     @FindBy(id = "oneway")
@@ -66,9 +66,9 @@ public class FlightSearchPage extends AbstractPage{
     
     public void enterFlightDetails(String passengers, String departing, String arriving)
     {
-        Select passengerSelect = new Select(passangersInput);
-        Select departingFromSelect = new Select(departingFromInput);
-        Select arringInSelect = new Select(arrivingInInput);
+        Select passengerSelect = new Select(this.passangersInput);
+        Select departingFromSelect = new Select(this.departingFromInput);
+        Select arringInSelect = new Select(this.arrivingInInput);
 
         passengerSelect.selectByValue(passengers);
         departingFromSelect.selectByValue(departing);
@@ -124,9 +124,9 @@ public class FlightSearchPage extends AbstractPage{
     // Random flight details selection
     public void enterRandomFlightDetails() {
         // Initialize Select objects for each dropdown
-        Select passengerSelect = new Select(passangersInput);
-        Select departingFromSelect = new Select(departingFromInput);
-        Select arrivingInSelect = new Select(arrivingInInput);
+        Select passengerSelect = new Select(this.passangersInput);
+        Select departingFromSelect = new Select(this.departingFromInput);
+        Select arrivingInSelect = new Select(this.arrivingInInput);
 
         // Select random options from each dropdown
         selectRandomOption(passengerSelect);
