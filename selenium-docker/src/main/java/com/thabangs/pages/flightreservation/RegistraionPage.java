@@ -71,6 +71,12 @@ public class RegistraionPage extends AbstractPage{
         this.lastNameInput.sendKeys(lastName);
     }
 
+    public void enterUserCredentials(String email, String password)
+    {
+        this.emailInput.sendKeys(email);
+        this.passwordInput.sendKeys(password);
+    }
+
     public void enterAdressDetails(String street, String city, String state, String zip)
     {
         this.streetInput.sendKeys(street);

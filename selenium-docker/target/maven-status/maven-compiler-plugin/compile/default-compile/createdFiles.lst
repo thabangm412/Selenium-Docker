@@ -1,3 +1,7 @@
-com\thabangs\pages\flightreservation\RegistrationConfirmationPage.class
 com\thabangs\Main.class
-com\thabangs\pages\RegistraionPage.class
+com\thabangs\pages\flightreservation\RegistraionPage.class
+com\thabangs\pages\AbstractPage.class
+com\thabangs\pages\flightreservation\FlightSearchPage.class
+com\thabangs\pages\flightreservation\FlightsConfirmationPage.class
+com\thabangs\pages\flightreservation\RegistrationConfirmationPage.class
+com\thabangs\pages\flightreservation\FlightSelectionPage.class

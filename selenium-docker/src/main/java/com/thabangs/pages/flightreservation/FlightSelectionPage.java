@@ -70,7 +70,7 @@ public class FlightSelectionPage extends AbstractPage {
     @FindBy(id = "arr-ba-business")
     private WebElement britishA_A_Business;
 
-    @FindBy(id = "confirm-flights")
+    @FindBy(xpath = "//button[@id='confirm-flights']")
     private WebElement confirmFlightsButton;
 
     public FlightSelectionPage(WebDriver driver)
@@ -82,6 +82,7 @@ public class FlightSelectionPage extends AbstractPage {
     public boolean isAt() {
         this.wait.until(ExpectedConditions.visibilityOf(this.selectFightPage));
         return this.selectFightPage.isDisplayed();
+        // log.info("Select flight page is displayed.")
     }
 
 
@@ -136,7 +137,7 @@ public class FlightSelectionPage extends AbstractPage {
         }
     }
 
-    public void chooseQatarSrrivingClass(String qatarArrivingClass)
+    public void chooseQatarArrivingClass(String qatarArrivingClass)
     {
         switch (qatarArrivingClass.toLowerCase()) {
             case "economy":
@@ -185,6 +186,12 @@ public class FlightSelectionPage extends AbstractPage {
             default:
                 throw new IllegalArgumentException("Invalid british class: " + britishArrivingClass);
         }
+    }
+
+    public void clickConfirmFlightsButton()
+    {
+        this.confirmFlightsButton.click();
+        log.info("Confirm Flight button clicked");
     }
 
 }
