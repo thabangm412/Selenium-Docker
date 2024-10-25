@@ -36,30 +36,10 @@ public class FlightsConfirmationPage extends AbstractPage {
         return this.flightsConfirmationPage.isDisplayed();
     }
     public String getFlightsTotalPrice() {
-        // Initialize Select objects for dropdowns
-        //Select selectFlightConfirmationNumber = new Select(this.flightsConfirmationNumber);
-        //Select selectTotalTaxApplied = new Select(this.flightTotalTax);
+        
         String totalPrice = this.flightTotalPrice.getText();
         log.info("Flight total price is: " + totalPrice);
-    
-        // Select options by index and get the selected values as strings
-        // selectFlightConfirmationNumber.selectByIndex(0);
-        // String flightConfirmationNumber = selectFlightConfirmationNumber.getFirstSelectedOption().getText();
-    
-        // selectTotalTaxApplied.selectByIndex(1);
-        // String flightTotalTax = selectTotalTaxApplied.getFirstSelectedOption().getText();
-    
-        //selectFlightTotalPrice.selectByIndex(2);
-        //String flightTotalPrice = selectFlightTotalPrice.getFirstSelectedOption().getText();
-        //this.flightTotalPrice.getText();
-    
-        // Log the details
-        // log.info("Flight confirmation number is: " + flightConfirmationNumber);
-        // log.info("Flight total tax is: " + flightTotalTax);
-        // log.info("Flight total price is: " + flightTotalPrice);
-    
-        // // Return the total price as a string
-         return totalPrice;
+        return totalPrice;
     }
     
     

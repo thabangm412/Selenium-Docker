@@ -70,18 +70,23 @@ public class FlightSearchPage extends AbstractPage{
         log.info("Two way trip option selected.");
     }
     
-    public void enterFlightDetails(String passengers, String departing, String arriving)
+    public void enterFlightDetails(String departing, String arriving)
     {
-        Select passengerSelect = new Select(this.passangersInput);
         Select departingFromSelect = new Select(this.departingFromInput);
         Select arringInSelect = new Select(this.arrivingInInput);
 
-        passengerSelect.selectByValue(passengers);
-        log.info("Passenger number selected: " + passengers);
         departingFromSelect.selectByValue(departing);
         log.info("Departing class selected: " + departing);
         arringInSelect.selectByValue(arriving);
         log.info("Arriving class selected: " + arriving);
+    }
+
+    public void selectPasseners(String noOfPassengers)
+    {
+        Select passengerSelect = new Select(this.passangersInput);
+        passengerSelect.selectByValue(noOfPassengers);
+        log.info("Passenger number selected: " + noOfPassengers);
+
     }
 
     public void chooseEconomyServiceClass()

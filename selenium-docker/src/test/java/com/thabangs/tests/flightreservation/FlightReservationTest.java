@@ -1,8 +1,7 @@
 package com.thabangs.tests.flightreservation;
 
 
-import java.util.Arrays;
-import java.util.List;
+ 
 
 import org.openqa.selenium.WebDriver;
  
@@ -10,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -22,23 +22,32 @@ import com.thabangs.pages.flightreservation.RegistraionPage;
 import com.thabangs.pages.flightreservation.RegistrationConfirmationPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class FlightReservationTest {
 
+    private static final Logger log = LoggerFactory.getLogger(RegistraionPage.class);
+
+
     private WebDriver driver;
-    private List<String> expectedPrices;
-
+    private String noOfPassengers;
+    private String expectedPrice;
+   
+    @Parameters({"noOfPassengers","expectedPrice"})
     @BeforeTest
-    @Parameters({"expectedPrice1","expectedPrice2","expectedPrice3","expectedPrice4"})
-    public void setDriver(@Optional String expectedPrice1, @Optional String expectedPrice2, @Optional String expectedPrice3, @Optional String expectedPrice4 )
-    {
-         this.expectedPrices = Arrays.asList(expectedPrice1, expectedPrice2, expectedPrice3, expectedPrice4);
 
-        //this.expectedPrices = expectedPrice;
+    public void setDriver(String noOfPassengers, String expectedPrice)
+    {
+
+        this.noOfPassengers = noOfPassengers;
+        this.expectedPrice = expectedPrice;
 
         // driver setup
         WebDriverManager.firefoxdriver().setup();
         this.driver = new FirefoxDriver();
+ 
     }
 
     @Test
@@ -60,7 +69,6 @@ public class FlightReservationTest {
     {
         RegistrationConfirmationPage registrationConfirmationPage = new RegistrationConfirmationPage(driver);
         Assert.assertTrue(registrationConfirmationPage.isAt());
-
         registrationConfirmationPage.clickGoToFlightsSearch();
     }
 
@@ -72,7 +80,9 @@ public class FlightReservationTest {
 
         // Using dynamic option
         flightSearchPage.chooseTrip("oneway");
-        flightSearchPage.enterRandomFlightDetails();
+        flightSearchPage.selectPasseners(noOfPassengers);
+        flightSearchPage.enterFlightDetails("Acapulco","Frankfurt");
+        //flightSearchPage.enterRandomFlightDetails();
         flightSearchPage.chooseServiceClass("first");
         flightSearchPage.clickSearchFlightsButton();
     }
@@ -96,31 +106,11 @@ public class FlightReservationTest {
         //FlightSearchPage flightSelectionPage = new FlightSearchPage(driver);
         FlightsConfirmationPage flightsConfirmationPage = new FlightsConfirmationPage(driver);
         
-        // Assert the confirmation page is displayed
+        //Assert the confirmation page is displayed
         Assert.assertTrue(flightsConfirmationPage.isAt());
-        flightsConfirmationPage.getFlightsTotalPrice();
-
-        //flightSelectionPage.enterFlightDetails("Two", "Frankfurt", "Acapulco");
-
-        
-        
-    
-        // Call enterRandomFlightDetails once and store the result
-        //String selectedFlightDetails = flightSelectionPage.enterRandomFlightDetails();
-    
-        // Compare the result and validate prices accordingly
-        // if (selectedFlightDetails.equals("One")) {
-        //     Assert.assertEquals(flightsConfirmationPage.getFlightsTotalPrice(), expectedPrices.get(0));
-    
-        // } else if (selectedFlightDetails.equals("Two")) {
-        //     Assert.assertEquals(flightsConfirmationPage.getFlightsTotalPrice(), expectedPrices.get(1));
-    
-        // } else if (selectedFlightDetails.equals("Three")) {
-        //     Assert.assertEquals(flightsConfirmationPage.getFlightsTotalPrice(), expectedPrices.get(2));
-    
-        // } else if (selectedFlightDetails.equals("Four")) {  // Corrected the condition for "Four"
-        //     Assert.assertEquals(flightsConfirmationPage.getFlightsTotalPrice(), expectedPrices.get(3));
-        // }
+        log.info("Confirmation Page displayed");
+        Assert.assertEquals(flightsConfirmationPage.getFlightsTotalPrice(), expectedPrice);
+        log.info("Returned price matches expected price:"+expectedPrice );
     }
     
 
