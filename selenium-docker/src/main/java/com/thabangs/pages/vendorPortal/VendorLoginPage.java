@@ -11,7 +11,7 @@ import com.thabangs.pages.AbstractPage;
 
 public class VendorLoginPage extends AbstractPage {
 
-    @FindBy(xpath = "//h1[@class='h4 text-gray-900 mb-4']")
+    @FindBy(xpath = "//h1[contains(text(),'Dashboard')]")
     private WebElement vendorLoginPage;
 
     @FindBy(id = "username")
@@ -22,6 +22,9 @@ public class VendorLoginPage extends AbstractPage {
 
     @FindBy(id = "login")
     private WebElement loginButton;
+
+    @FindBy(xpath = "//h1[@class='h3 mb-0 text-gray-800']")
+    private WebElement vendorHomePage;
 
     public VendorLoginPage(WebDriver driver)
     {
