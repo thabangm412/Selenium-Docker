@@ -38,15 +38,6 @@ public class VendorPortalLoginTest {
         vendorLoginPage.clickVendorLogin();
         Assert.assertTrue(vendorLoginPage.isAt());
 
-//        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-//        try {
-//            FileHandler.copy(screenshot, new File("root/screenshot/vendorLoginTest.png"));
-//            System.out.println("Screenshot taken: vendorLoginTest.png");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        
-
     }
 
     @AfterTest
