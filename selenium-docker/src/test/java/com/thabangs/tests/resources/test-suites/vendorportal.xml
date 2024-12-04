@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="vendor-portal">
+    <test name="user-sam">
+        <parameter name="username" value="sam" />
+        <parameter name="password" value="sam" />
+        <classes>
+            <class name="com.thabangs.tests.vendorportal.AbstractTest"/>
+        </classes>
+    </test>
+</suite>
